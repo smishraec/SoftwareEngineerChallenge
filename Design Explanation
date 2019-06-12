@@ -1,0 +1,5 @@
+1. For microservices, it will use the Spring Cloud echo system which includes Eureka, Ribbon, Hystrix and Spring Cloud Config. All the logs will send to Logging system via Kafka by Spring AOP.
+2. MySQL_1 is used as a buffer for business module. All the data will sync to Hadoop and SQL_2, SQL_3, SQL_4 (and so on) by Canal.
+3. Incoming data will be synchronized into MySQL cluster instantly. Slice system will fetch the data from the cluster and send result into MySQL_5 cluster.
+4. Incoming data will also be synchronized into Hadooop periodically. Offline system will calculate the incremental data and historical data, merge the results into MySQL_5 cluster.
+5. The incoming query will be able to find the result set from MySQL_5.
